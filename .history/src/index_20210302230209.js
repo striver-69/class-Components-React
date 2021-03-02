@@ -18,24 +18,15 @@ class App extends React.Component{
     )
   }
 
-  renderContent(){
-    if(this.state.errorMessage&&!this.state.lat){
-      return <div>Error:{this.state.errorMessage}</div>
-    }
-    if(!this.state.errorMessage&&this.state.lat)
-      return <SeasonDisplay lat={this.state.lat}/>
-
-    return <Spinner message="loading"/>
-  }
-
   render(){
-        return (
-          <div className="border red">
-            {this.renderContent()}
-          </div>
-        )
-  }
+      if(this.state.errorMessage&&!this.state.lat){
+        return <div>Error:{this.state.errorMessage}</div>
+      }
+      if(!this.state.errorMessage&&this.state.lat)
+        return <SeasonDisplay lat={this.state.lat}/>
 
+      return <Spinner/>
+  }
 }
 
 ReactDOM.render(<App/>,document.querySelector('#root'))
